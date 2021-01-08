@@ -51,7 +51,7 @@ func createView(controls *ControlList, conf *cf.Config) {
 	controls.mainWindow = ui.AddWindow(0, 0, 22, 7, "TermFB2")
 	controls.mainWindow.SetPack(ui.Vertical)
 
-	controls.mainWindow.OnKeyDown(func(ev ui.Event) bool {
+	controls.mainWindow.OnKeyDown(func(ev ui., interface {}) bool, interface {}) {
 		if ev.Key == term.KeyF2 && conf.UseDb {
 			createBookListDialog(controls, conf)
 			return true
@@ -191,7 +191,7 @@ func createBookListDialog(controls *ControlList, conf *cf.Config) {
 	// override OnKeyDown to support incremental search and
 	// opening selected book by pressing Enter
 	// Escape closes the dialog without doing anything
-	controls.bookListWindow.OnKeyDown(func(ev ui.Event) bool {
+	controls.bookListWindow.OnKeyDown(func(ev ui.Event, interface {}) bool, interface {}) {
 		if ev.Ch != 0 {
 			filter := conf.DbDriver.Filter() + string(ev.Ch)
 			conf.DbDriver.SetFilter(filter)
